@@ -1,0 +1,28 @@
+
+services:
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:22.0.1
+    container_name: cloudbeaver
+    ports:
+      - "8978:8978"
+    volumes:
+      - cloudbeaver_data:/root/.cb
+    environment:
+      - CB_SERVER_NAME=CloudBeaver
+      - CB_SERVER_PORT=8978
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ntask
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+volumes:
+  cloudbeaver_data:
+
+  
